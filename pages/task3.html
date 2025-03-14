@@ -30,7 +30,7 @@
         <div class="container">
             <!-- 顶部标题 -->
             <div class="header">
-                <h1>⚔️ Task 3: Multimodal Intention Recognition for Social Media</h1>
+                <h1>⚔️ Task 3: Multimodal Intention Recognition for Social-Media</h1>
             </div>
 
             <!-- 任务内容 -->
@@ -46,7 +46,8 @@
             <div class="section">
                 <h3>Dataset</h3>
                 <p>For the challenge, we collected a multimodal social intention dataset containing 979 Twitter posts annotated with 7868 intentions. 
-                Specifically, the dataset is partitioned into 881 Twitter posts for training and 98 Twitter posts for testing.</p>
+                <!-- Specifically, the dataset is partitioned into 881 Twitter posts for training and 98 Twitter posts for testing. -->
+                </p>
                 
                 <p>The intentions include nine different types of intentions extracted from ATOMIC and one open-domain intention:</p>
                 <ul>
@@ -59,8 +60,10 @@
                     <li><b>oEffect</b>: Impact on others</li>
                     <li><b>oReact</b>: Others' reaction</li>
                     <li><b>oWant</b>: Others' desire</li>
-                    <li><b>Open</b>: Motive and purpose behind a user's decision to publish a specific post content</li>
                 </ul>
+                <p>
+                    The open intention, termed “Open”, describes the motive and purpose behind a user's decision to publish a specific post content. Each intention is annotated with Label Studio where five annotators evaluate generated candidates' intentions alongside raw text-image pairs.
+                </p>
 
                 <a href="https://drive.google.com/drive/folders/1I9qtG74-9dxNS8iKxHzDPe8hb_wSK38u?usp=sharing" class="download-link">
                     📥 Dataset Download
@@ -97,7 +100,7 @@
 
             <div class="section">
                 <h3>Metric</h3>
-                <p>The evaluation metric is the average BERT score (reported as percentages) for the 10 different aspects of the generated intentions.</p>
+                <p>The evaluation metric is the <b>average BERT score</b> (reported as percentages) for the 10 different aspects of the generated intentions.</p>
             </div>
 
             <div class="section">
