@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><text x='0' y='12' font-size='12'>⚔️</text></svg>">
+    <title>Task 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css"> <!-- 引入外部CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/themes/prism.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/prism.js"></script>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <img src="../imgs/lefttop_logo.png" alt="Logo">
+        <a href="../index.html">⭐ Introduction</a>
+        <a href="timeline.html">📅 Timeline</a>
+        <a href="registration.html">📋 Registration</a>
+        <a href="task1.html">⚔️ Task 1</a>
+        <a href="task2.html" class="active">⚔️ Task 2</a>
+        <a href="task3.html">⚔️ Task 3</a>
+        <a href="prizes.html">🏆 Prizes</a>
+        <a href="leaderboard.html">📈 Leaderboard</a>
+        <a href="organizers.html">🧑‍🤝‍🧑 Organizers</a>
+    </div>
+
+    <!-- 内容部分 -->
+    <div class="content">
+        <div class="container">
+            <!-- 顶部标题 -->
+            <div class="header">
+                <h1>⚔️ Task 2: Bursty Event Cascade Classification</h1>
+            </div>
+
+            <!-- 任务内容 -->
+            <div class="section">
+                <h3>Introduction</h3>
+                <p>
+                    The bursty event cascade classification task aims to classify social network structures as either the cascade of bursty events or normal events. 
+                    Efficient classification of bursty event cascade enables the early detection of bursty events, safeguarding the integrity of online discourse and public perception.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Dataset</h3>
+                <p>
+                    For the bursty event cascade classification challenge, we collect a dataset from Weibo comprising a total of 15,110 cascades. 
+                    This dataset encompasses 6,346 cascades representing bursty events and 8,764 cascades representing normal events.
+                    Specifically, the dataset is partitioned into 13,599 cascades for training and 1,511 cascades for testing. 
+                </p>
+                <p>
+                    The dataset comprises posts made during the event, along with interactions such as shares, forming a cascade network.
+                    The dataset is labeled with the event class for each cascade network.
+                    Within the cascade network, each node represents a Weibo post, while edges symbolize share interactions between posts.
+                </p>
+
+                <a href="https://drive.google.com/drive/folders/1Pg9Hi6CM7xCsKqE341TfaQmoWmi31bqe?usp=sharing" class="download-link">
+                    📥 Dataset Download
+                </a>
+
+                <h4>Dataset Description</h4>
+                <p>The dataset comprises two files: <code>train.json</code> and <code>test.json</code>. The <code>test.json</code> file does not contain labels.</p>
+                
+                <table>
+                    <tr>
+                        <th>Field</th>
+                        <th>Meaning</th>
+                    </tr>
+                    <tr>
+                        <td>edge_index</td>
+                        <td>This field represents the edges of the cascade network, denoting the Weibo share interactions. It is structured as a 2D array with a shape of <code>[2, edge_num]</code>, where <code>edge_num</code> signifies the number of interactions within the cascade.</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>This field contains the feature embeddings of each Weibo post in the cascade network. These embeddings represent the content of the Weibo posts processed by BERT, a language model known for its contextual representation learning.</td>
+                    </tr>
+                    <tr>
+                        <td>label</td>
+                        <td>This field indicates the label of the event class associated with the cascade network. It serves as the ground truth for classification tasks, distinguishing between bursty events and normal events.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>Metric</h3>
+                <p>The evaluation metric is the <b>F1 score</b>, the harmonic mean of the precision and recall.</p>
+            </div>
+
+            <div class="section">
+                <h3>Submission Rules</h3>
+                <p>There is no limit to the number of submissions per team. The final assessment will be based on the team's most recent submission.</p>
+
+                <h4>Submission Format</h4>
+                <p>The submission should be a <code>.zip</code> file with the following structure:</p>
+                <pre><code class="language-none">{team_id}.zip
+    ├── source_code
+    │   ├── evaluation.py
+    │   ├── ...
+    ├── result.json
+    ├── introduction.pdf</code></pre>
+
+                <h4>Result File Format</h4>
+                <pre><code class="language-json">[0, 1, 0, 1, 0, ..., 1, 0, 0]</code></pre>
+
+                <h4>Source Code</h4>
+                <p>The <code>source_code</code> folder must contain an executable <code>evaluation.py</code> script that can test the provided data in <code>test.json</code> and generate the corresponding <code>result.json</code> file.</p>
+
+                <h4>Model Introduction</h4>
+                <p>The <code>introduction.pdf</code> should describe the method and its innovative aspects. The innovation of the method will contribute to 20% of the total score.</p>
+
+                <h4>Submission Method</h4>
+                <p>Upload your submission files to a secure platform like Google Drive, generate a shareable link, and submit via the form below.</p>
+                <p class="warning">Only submissions that fully comply with the rules will be accepted.</p>
+                
+                <a href="https://forms.gle/ykCtEQ5MuudpP7S77" class="submission-link">
+                    📝 Submission Form
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

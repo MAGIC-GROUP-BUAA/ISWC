@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><text x='0' y='12' font-size='12'>⚔️</text></svg>">
+    <title>Task 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css"> <!-- 引入外部CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/themes/prism.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/prism.js"></script>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <img src="../imgs/lefttop_logo.png" alt="Logo">
+        <a href="../index.html">⭐ Introduction</a>
+        <a href="timeline.html">📅 Timeline</a>
+        <a href="registration.html">📋 Registration</a>
+        <a href="task1.html" class="active">⚔️ Task 1</a>
+        <a href="task2.html">⚔️ Task 2</a>
+        <a href="task3.html">⚔️ Task 3</a>
+        <a href="prizes.html">🏆 Prizes</a>
+        <a href="leaderboard.html">📈 Leaderboard</a>
+        <a href="organizers.html">🧑‍🤝‍🧑 Organizers</a>
+    </div>
+
+    <!-- 内容部分 -->
+    <div class="content">
+        <div class="container">
+            <!-- 顶部标题 -->
+            <div class="header">
+                <h1>⚔️ Task 1: Retweet Network Link Prediction</h1>
+            </div>
+
+            <!-- 任务内容 -->
+            <div class="section">
+                <h3>Introduction</h3>
+                <p>The retweet network link prediction task aims to predict the retweet behavior between users in the social network. 
+                By predicting the retweet behavior patterns, insights can be gained into the mechanisms driving information diffusion, aiding in targeted content dissemination and audience engagement strategies.</p>
+            </div>
+
+            <div class="section">
+                <h3>Dataset</h3>
+                <p>For the challenge, we collected a retweet dataset from Weibo, containing the retweet network of 1,563,421 users.</p>
+
+                <a href="https://drive.google.com/drive/folders/1WdJqk8qsD7oVfk-JQ7Xc6fl3rRXCndkI?usp=drive_link" class="download-link">
+                    📥 Dataset Download
+                </a>
+
+                <h4>Dataset Description</h4>
+                <p>The dataset comprises two files: <code>train.txt</code> and <code>test.txt</code>.</p>
+
+                <h4>Train File Format</h4>
+                <pre><code class="language-none">== train.txt ==
+1563421
+701683  871966  1
+546410  304924  3
+93571   927327  1
+1307394 1150598 4
+...</code></pre>
+                <p>The first line indicates the total number of nodes. Each subsequent line represents an edge in the network with source node ID, target node ID, and edge weight.</p>
+
+                <h4>Test File Format</h4>
+                <pre><code class="language-none">== test.txt ==
+612169  229397
+1210014 943698
+1542231 53444
+530523  207660
+1084259 1263491
+...</code></pre>
+                <p>Each line represents a pair of users for which a retweet relationship needs to be predicted.</p>
+            </div>
+
+            <div class="section">
+                <h3>Metric</h3>
+                <p>The evaluation metric is the <b>F1 score</b>, the harmonic mean of precision and recall.</p>
+            </div>
+
+            <div class="section">
+                <h3>Submission Rules</h3>
+                <p>There is no limit to the number of submissions per team. The final assessment will be based on the most recent submission.</p>
+
+                <h4>Submission Format</h4>
+                <p>The submission should be a <code>.zip</code> file with the following structure:</p>
+                <pre><code class="language-none">{team_id}.zip
+    ├── source_code
+    │   ├── evaluation.py
+    │   ├── ...
+    ├── result.json
+    ├── introduction.pdf</code></pre>
+
+                <h4>Result File Format</h4>
+                <pre><code class="language-json">[0, 1, 0, 1, 0, ..., 1, 0, 0]</code></pre>
+
+                <h4>Source Code</h4>
+                <p>The <code>source_code</code> folder must contain an executable <code>evaluation.py</code> script.</p>
+
+                <h4>Model Introduction</h4>
+                <p>The <code>introduction.pdf</code> should describe the method and its innovative aspects.</p>
+
+                <h4>Submission Method</h4>
+                <p>Upload your submission files to a secure platform like Google Drive, generate a shareable link, and submit via the form below.</p>
+                <p class="warning">Only submissions that fully comply with the rules will be accepted.</p>
+                
+                <a href="https://forms.gle/15e3TiGrWxiDZq4j7" class="submission-link">
+                    📝 Submission Form
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

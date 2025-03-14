@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><text x='0' y='12' font-size='12'>⚔️</text></svg>">
+    <title>Task 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css"> <!-- 引入外部CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/themes/prism.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/prism.js"></script>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <img src="../imgs/lefttop_logo.png" alt="Logo">
+        <a href="../index.html">⭐ Introduction</a>
+        <a href="timeline.html">📅 Timeline</a>
+        <a href="registration.html">📋 Registration</a>
+        <a href="task1.html">⚔️ Task 1</a>
+        <a href="task2.html">⚔️ Task 2</a>
+        <a href="task3.html" class="active">⚔️ Task 3</a>
+        <a href="prizes.html">🏆 Prizes</a>
+        <a href="leaderboard.html">📈 Leaderboard</a>
+        <a href="organizers.html">🧑‍🤝‍🧑 Organizers</a>
+    </div>
+
+    <!-- 内容部分 -->
+    <div class="content">
+        <div class="container">
+            <!-- 顶部标题 -->
+            <div class="header">
+                <h1>⚔️ Task 3: Multimodal Intention Recognition for Social Media</h1>
+            </div>
+
+            <!-- 任务内容 -->
+            <div class="section">
+                <h3>Introduction</h3>
+                <p>
+                    The competition focuses on a challenging text generation task: multimodal intention recognition. 
+                    The multimodal intention recognition task aims to recognize the underlying intent (e.g., informational, emotional, promotional) behind multi-modal social media content (e.g., text-image pairs). 
+                    Recognizing the intention behind multimodal social media content facilitates a deeper understanding of user behavior and preferences, and accurately grasp the motives behind user posts, thereby deepening our understanding of user behavior.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Dataset</h3>
+                <p>For the challenge, we collected a multimodal social intention dataset containing 979 Twitter posts annotated with 7868 intentions. 
+                Specifically, the dataset is partitioned into 881 Twitter posts for training and 98 Twitter posts for testing.</p>
+                
+                <p>The intentions include nine different types of intentions extracted from ATOMIC and one open-domain intention:</p>
+                <ul>
+                    <li><b>xNeed</b>: User's need</li>
+                    <li><b>xIntent</b>: User's intention</li>
+                    <li><b>xAttr</b>: User's attribute</li>
+                    <li><b>xEffect</b>: Effect of user's action</li>
+                    <li><b>xReact</b>: User's reaction</li>
+                    <li><b>xWant</b>: User's desire</li>
+                    <li><b>oEffect</b>: Impact on others</li>
+                    <li><b>oReact</b>: Others' reaction</li>
+                    <li><b>oWant</b>: Others' desire</li>
+                    <li><b>Open</b>: Motive and purpose behind a user's decision to publish a specific post content</li>
+                </ul>
+
+                <a href="https://drive.google.com/drive/folders/1I9qtG74-9dxNS8iKxHzDPe8hb_wSK38u?usp=sharing" class="download-link">
+                    📥 Dataset Download
+                </a>
+
+                <h4>Dataset Description</h4>
+                <p>The dataset comprises two files and a folder: <code>train.json</code>, <code>test.json</code>, and <code>image</code>.</p>
+                
+                <table>
+                    <tbody align="center" valign="center">
+                    <tr>
+                        <th>Field</th>
+                        <th>Meaning</th>
+                    </tr>
+                    </tbody>
+                    <tr>
+                        <td>intention_labels</td>
+                        <td>This field contains a list of labels. if <code>intention_labels[3]</code> equals 1, it signifies that <code>Intention 3</code> is the ground truth for the intention of this tweet.</td>
+                    </tr>
+                    <tr>
+                        <td>image</td>
+                        <td>This field denotes the file of the tweet image. Correspondingly, the image file can be located in the <code>image</code> folder based on this provided name.</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>This field encompasses the textual content of the tweet.</td>
+                    </tr>
+                    <tr>
+                        <td>intentions</td>
+                        <td>A dictionary comprising entries from <code>Intention 1</code> to <code>Intention 10</code></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>Metric</h3>
+                <p>The evaluation metric is the average BERT score (reported as percentages) for the 10 different aspects of the generated intentions.</p>
+            </div>
+
+            <div class="section">
+                <h3>Submission Rules</h3>
+                <p>There is no limit to the number of submissions per team. The final assessment will be based on the team's most recent submission.</p>
+
+                <h4>Submission Format</h4>
+                <p>The submission should be a <code>.zip</code> file with the following structure:</p>
+                <pre><code class="language-none">{team_id}.zip
+    ├── source_code
+    │   ├── evaluation.py
+    │   ├── ...
+    ├── result.json
+    ├── introduction.pdf</code></pre>
+
+                <h4>Result File Format</h4>
+                <pre><code class="language-json">[
+    {
+        "Intention 1": "", 
+        "Intention 2": "This is Intention 2", 
+        ...
+    },
+    {   
+        "Intention 1": "hello1", 
+        "Intention 2": "This is not Intention 2", 
+        ...
+    },
+    ...
+]</code></pre>
+
+                <h4>Source Code</h4>
+                <p>The <code>source_code</code> folder must contain an executable <code>evaluation.py</code> script that can test the provided data in <code>test.json</code> and generate the corresponding <code>result.json</code> file.</p>
+
+                <h4>Model Introduction</h4>
+                <p>The <code>introduction.pdf</code> should describe the method and its innovative aspects. The innovation of the method will contribute to 20% of the total score.</p>
+
+                <h4>Submission Method</h4>
+                <p>Upload your submission files to a secure platform like Google Drive, generate a shareable link, and submit via the form below.</p>
+                <p class="warning">Only submissions that fully comply with the rules will be accepted.</p>
+                
+                <a href="https://forms.gle/V2g64wmQS5xJTR9r5" class="submission-link">
+                    📝 Submission Form
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

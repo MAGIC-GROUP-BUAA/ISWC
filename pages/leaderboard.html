@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><text x='0' y='12' font-size='12'>📈</text></svg>">
+    <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <img src="../imgs/lefttop_logo.png" alt="Logo">
+        <a href="../index.html">⭐ Introduction</a>
+        <a href="timeline.html">📅 Timeline</a>
+        <a href="registration.html">📋 Registration</a>
+        <a href="task1.html">⚔️ Task 1</a>
+        <a href="task2.html">⚔️ Task 2</a>
+        <a href="task3.html">⚔️ Task 3</a>
+        <a href="prizes.html">🏆 Prizes</a>
+        <a href="leaderboard.html" class="active">📈 Leaderboard</a>
+        <a href="organizers.html">🧑‍🤝‍🧑 Organizers</a>
+    </div>
+
+    <!-- 内容部分 -->
+    <div class="content">
+        <div class="container">
+            <!-- 顶部标题 -->
+            <div class="header">
+                <h1>📈 Leaderboard</h1>
+            </div>
+
+            <div class="announcement">
+                <h3>List of Award-winning Teams</h3>
+                <p>Congratulations to the following teams for winning awards in this competition!!!</p>
+            </div>
+
+            <!-- Task 1 排行榜 -->
+            <div class="section">
+                <h3>Task 1: Retweet Network Link Prediction</h3>
+                <table id="task1-table" class="table-container">
+                    <thead>
+                        <tr>
+                            <th>Award</th>
+                            <th>Team's Name</th>
+                            <th>Leader's Affiliation</th>
+                            <th>Accuracy</th>
+                            <th>Leader's Name</th>
+                            <th>Team Members</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Task 2 排行榜 -->
+            <div class="section">
+                <h3>Task 2: Bursty Event Cascade Classification</h3>
+                <table id="task2-table" class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Award</th>
+                            <th>Team's Name</th>
+                            <th>Leader's Affiliation</th>
+                            <th>Accuracy</th>
+                            <th>Leader's Name</th>
+                            <th>Team Members</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Task 3 排行榜 -->
+            <div class="section">
+                <h3>Task 3: Multimodal Intention Recognition for Social Media</h3>
+                <table id="task3-table" class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Award</th>
+                            <th>Team's Name</th>
+                            <th>Leader's Affiliation</th>
+                            <th>Accuracy</th>
+                            <th>Leader's Name</th>
+                            <th>Team Members</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addMedalEmoji(rank) {
+            switch(rank) {
+                case 1: return '<span class="medal gold">🥇</span>';
+                case 2: return '<span class="medal silver">🥈</span>';
+                case 3: return '<span class="medal bronze">🥉</span>';
+                default: return '';
+            }
+        }
+
+        function loadTableData(csvPath, tableId) {
+            Papa.parse(csvPath, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const table = document.querySelector(`#${tableId} tbody`);
+                    table.innerHTML = '';
+                    
+                    results.data
+                        .filter(row => Object.values(row).some(val => val)) // 过滤空行
+                        .forEach((row) => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td>${row["Award-winning Teams"]}</td>
+                                <td>${row["Team's Name"]}</td>
+                                <td>${row["Leader's Affiliation"]}</td>
+                                <td>${row["Accuracy"]}</td>
+                                <td>${row["Leader's name"]}</td>
+                                <td>${row["Other Team Members' Name"] || '-'}</td>
+                            `;
+                            table.appendChild(tr);
+                        });
+                },
+                error: function(error) {
+                    console.error(`Error loading ${csvPath}:`, error);
+                    const table = document.querySelector(`#${tableId} tbody`);
+                    table.innerHTML = '<tr><td colspan="6">数据加载失败，请稍后再试</td></tr>';
+                }
+            });
+        }   
+
+        // 加载各任务的排行榜数据
+        loadTableData('../table/leaderbord1.csv', 'task1-table');
+        loadTableData('../table/leaderbord2.csv', 'task2-table');
+        loadTableData('../table/leaderbord3.csv', 'task3-table');
+    </script>
+</body>
+</html>
