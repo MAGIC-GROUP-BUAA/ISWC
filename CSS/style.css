@@ -81,7 +81,7 @@ body::before {
 
 .content {
     margin-left: 250px;
-    margin-right: 30px;
+    margin-right: 20px;
     width: calc(100% - 250px);
     padding: 20px;
 }
