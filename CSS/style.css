@@ -225,6 +225,8 @@ tr:hover td {
 @media screen and (max-width: 768px) {
     body {
         flex-direction: column;
+        margin-left: 0;
+        padding: 0; /* 移除body的内边距 */
     }
     
     .sidebar {
@@ -232,24 +234,32 @@ tr:hover td {
         width: 100%;
         height: auto;
         text-align: center;
+        margin: 0 auto; /* 添加水平居中 */
         padding: 10px;
         display: flex;  /* 使用 flexbox 布局 */
         flex-wrap: wrap;  /* 自动换行，以适应不同屏幕尺寸 */
         justify-content: center;  /* 链接居中排列 */
+        align-items: center; /* 垂直居中对齐 */
+        box-sizing: border-box; /* 确保padding不会增加宽度 */
     }
     
     .sidebar a {
         display: inline-block;
         margin: 5px;
         padding: 10px;
-        width: 42%;  /* 每行最多显示两个链接 */
+        width: calc(50% - 20px); /* 考虑margin的宽度计算 */
+        box-sizing: border-box; /* 确保padding不会影响宽度计算 */
+        font-size: 15px; /* 适当减小字体大小 */
     }
 
     .content {
-        margin-left: 0;
+        margin: 0 auto; /* 内容区域水平居中 */
         width: 100%;
         padding: 10px;
+        box-sizing: border-box;
     }
+
+    
 
     .header h1 {
         font-size: 24px;
